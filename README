@@ -1,0 +1,11 @@
+这是一个rk3399板子buildroot编译自己的包的实例，依赖iopencv3.4
+首先要在buildroot目录下选择板子：
+source build/envsetup.sh 选择rk3399
+然后make menuconfig打开opencv3.4之后make savedefconfig保存为默认配置，之后make就能生成rootfs了。
+
+1，cmake工程放在linux_sdk/external/rk3399demo目录下，
+2，rk3399demo这个目录放在linux_sdk/buildroot/package/rockchip目录下，是menuconfig的选通配置文件
+3，linux_sdk/buildroot/package/rockchip/Config.in文件里面加入source "package/rockchip/rk3399demo/Config.in"
+4，make rk3399demo生成交叉编译包
+5，把生成的可执行文件adb pull到板子上就可以跑起来了
+
